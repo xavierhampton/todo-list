@@ -1,0 +1,41 @@
+/* general */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: inter;
+}
+html {
+    background-color: #e5e5f7;
+    background: repeating-linear-gradient( 45deg, #0000000a, #0000000a 3px, #e5e5f70a 5px, #e5e5f70a 25px );
+}
+
+@font-face {
+    font-family: inter;
+    src: url('./assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('TrueType');
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+/* home */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 16px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 100px;
+
+}
+.home-header {
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
