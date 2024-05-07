@@ -1,17 +1,44 @@
+import {helpers} from './helpers.js'
+import {index} from './index.js'
+
 class home {
-    static createElement(element, text, cls) {
-        const e = document.createElement(element)
-        if (text) {e.textContent = text}
-        if (cls) {e.classList.add(cls)}
-        return e
+    static createProjectList(projects) {
+        const container = helpers.createElement('div', '', 'project-container')
+
+        const projectHeaderContainer = helpers.createElement('div','','project-header-container')
+        projectHeaderContainer.appendChild(helpers.createElement('p','Projects','project-header'))
+        projectHeaderContainer.appendChild(helpers.createElement('button','New Project', 'project-button'))
+
+        container.appendChild(projectHeaderContainer)
+
+        if (projects.length == 0) {
+            container.appendChild(helpers.createElement('p', 'This is where you will see your project list. Create a project to get started!', 'empty-list'))
+        }
+
+        for (const e of projects) {
+            console.log(e)
+            container.appendChild(this.createProjectCard(e))
+        }
+
+        return container
     }
-    static build(content) {
-        const homeContainer = this.createElement('div',null,'home-container')
-        homeContainer.appendChild(this.createElement('p',"Xavier's Todo App",'home-header'))
-        homeContainer.appendChild(this.createElement('p', 'This is an example description', 'home-description'))
+    static createProjectCard(project) {
+        const container = helpers.createElement('div', null, 'project-card-container')
+        const title = helpers.createElement('p', project.name, 'project-title')
+        title.addEventListener('click',() => {index.expandProject(project)})
+        container.appendChild(title)
+        const delButton = document.createElement('button')
+        delButton.addEventListener('click', function() {index.deleteProject(project)})
+        delButton.textContent = 'X'
+        delButton.classList.add('delete-project')
+        container.appendChild(delButton)
 
+        return container
+    }
+    static build(content, projects) {
+        const projectContainer = this.createProjectList(projects)
 
-        content.appendChild(homeContainer)
+        content.appendChild(projectContainer)
     }
 }
 export {home}
