@@ -7,7 +7,11 @@ class home {
 
         const projectHeaderContainer = helpers.createElement('div','','project-header-container')
         projectHeaderContainer.appendChild(helpers.createElement('p','Projects','project-header'))
-        projectHeaderContainer.appendChild(helpers.createElement('button','New Project', 'project-button'))
+        const projButton = document.createElement('button')
+        projButton.textContent = 'New Project'
+        projButton.classList.add('project-button')
+        projButton.addEventListener('click', () => {index.createProject()})
+        projectHeaderContainer.appendChild(projButton)
 
         container.appendChild(projectHeaderContainer)
 
@@ -16,7 +20,6 @@ class home {
         }
 
         for (const e of projects) {
-            console.log(e)
             container.appendChild(this.createProjectCard(e))
         }
 
