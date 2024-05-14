@@ -49,11 +49,11 @@ class creationPage {
         const title_fieldset = document.createElement('fieldset')
         title_fieldset.classList.add('todo-title-field')
         const title_legend = document.createElement('legend')
-        title_legend.textContent = 'Todo Title'
+        title_legend.textContent = 'Todo Title*'
         title_fieldset.appendChild(title_legend)
         const title_input = document.createElement('input')
         title_input.type = 'text'
-        title_input.maxLength = 16
+        title_input.maxLength = 10
         title_fieldset.appendChild(title_input)
         container.appendChild(title_fieldset)
 
@@ -66,14 +66,14 @@ class creationPage {
         desc_input.rows = '3'
         desc_input.cols = '30'
         
-        desc_input.maxLength = 50
+        desc_input.maxLength = 80
         desc_fieldset.appendChild(desc_input)
         container.appendChild(desc_fieldset)
 
         const date_fieldset = document.createElement('fieldset')
         date_fieldset.classList.add('todo-date-field')
         const date_legend = document.createElement('legend')
-        date_legend.textContent = 'Due Date'
+        date_legend.textContent = 'Due Date*'
         date_fieldset.appendChild(date_legend)
         const date_input = document.createElement('input')
         date_input.type = 'date'
@@ -89,6 +89,7 @@ class creationPage {
         button1.value = '0';
         button1.name = 'priority'
         button1.id = 'low'
+        button1.checked = 'checked'
 
         const label1 = document.createElement('label')
         label1.classList.add('low')
@@ -139,12 +140,45 @@ class creationPage {
         const submitButton = document.createElement('button')
         submitButton.classList.add('submit')
         submitButton.textContent = 'Create Todo'
-        buttonContainer.appendChild(submitButton)
+        submitButton.addEventListener('click', () => {
+            let unparsedDate = date_input.value
+            let date = ''
+            date = date.concat(unparsedDate.slice(5,7), '-', unparsedDate.slice(8,10), '-', unparsedDate.slice(0,4))
 
+            console.log(date)
+            const title = title_input.value
+            const desc = desc_input.value
+            const priorityVal = document.querySelector('input[name="priority"]:checked').value
+            let priority = null
+            console.log(priorityVal)
+            switch (priorityVal) {
+                case '0':
+                    priority = 'green'
+                    break
+                case '1':
+                    priority = 'yellow'
+                    break
+                case '2':
+                    priority = 'red'
+                    break
+            }
+            console.log(priority)
+            if (!title) {
+                title_input.style.borderColor = 'red'
+            }
+            if (!date) {
+                date_input.style.borderColor = 'red'
+            }
+            if (title && date) {
+            index.addTodo(proj, new todo(title, desc, date, priority))
+            index.expandProject(proj)
+            }
+        })
+
+        buttonContainer.appendChild(submitButton)
         container.appendChild(buttonContainer)
 
         content.appendChild(container)
     }
-
 }
 export {creationPage}

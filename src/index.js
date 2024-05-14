@@ -52,6 +52,14 @@ class index {
         creationPage.buildTodo(body, proj)
     }
 
+    static deleteTodo(p, t) {
+        const index = p.list.indexOf(t);
+        if (index > -1) { 
+          p.list.splice(index, 1)
+        }
+        this.expandProject(p)
+    }
+
     static clear() {
         while (body.firstChild) {
             body.removeChild(body.lastChild);

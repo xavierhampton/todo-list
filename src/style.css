@@ -396,3 +396,51 @@ body {
     margin-bottom: 5px;
 }
 
+/* Expanded View */
+.todo-card-container {
+    display: flex;
+    align-items: center;
+
+    width: 450px;
+    height: 100px;
+
+    margin-top: 30px;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.todo-card-container > button {
+    margin-left: auto;
+    width: 40px;
+}
+.todo-card-inner-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 140px;
+
+    margin-left: 10px;
+}
+.todo-card-desc {
+    width: 230px;
+    max-width: 230px;
+    height: 80%;
+    word-break: break-all;
+    white-space: normal;
+    font-style: italic;
+
+    margin-left: auto;
+
+}
+.todo-card-title {
+    font-size: 20px;
+    font-weight: 700;
+
+    text-decoration: underline;
+
+    transition: .4s;
+}
+.todo-card-title:hover {
+    cursor: pointer;
+}
+
