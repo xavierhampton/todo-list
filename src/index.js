@@ -18,8 +18,18 @@ class index {
         content.appendChild(container)
     }   
 
+    static save() {
+        localStorage.setItem('projects', JSON.stringify(this.projects))
+    }
+
     static loadProjects() {
         this.projects = []
+        const storageObject = JSON.parse(localStorage.getItem('projects'))
+        if (storageObject){
+        for (let i = 0; i < storageObject.length; i +=1 ) {
+            this.projects.push(storageObject[i])
+        }
+        }
     }
 
     static deleteProject(p) {
@@ -29,27 +39,32 @@ class index {
         }
         this.clear()
         this.build()
+        this.save()
     }
 
     static addProject(proj) {
         this.projects.push(proj)
+        this.save()
     }
 
     static createProject() {
         this.clear()
         this.createHeader(body)
         creationPage.buildProject(body)
+        this.save()
 
     }
 
     static addTodo(proj, todo) {
         proj.list.push(todo)
+        this.save()
     }
 
     static createTodo(proj) {
         this.clear()
         this.createHeader(body)
         creationPage.buildTodo(body, proj)
+        this.save()
     }
 
     static deleteTodo(p, t) {
@@ -58,6 +73,7 @@ class index {
           p.list.splice(index, 1)
         }
         this.expandProject(p)
+        this.save()
     }
 
     static clear() {
