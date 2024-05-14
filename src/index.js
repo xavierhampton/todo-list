@@ -49,7 +49,7 @@ class index {
     static createTodo(proj) {
         this.clear()
         this.createHeader(body)
-        creationPage.buildTodo(body)
+        creationPage.buildTodo(body, proj)
     }
 
     static clear() {

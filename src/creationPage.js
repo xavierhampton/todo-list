@@ -44,7 +44,106 @@ class creationPage {
         content.appendChild(container)
     }
     static buildTodo(content, proj) {
-        console.log('hlelo')
+        const container = helpers.createElement('div', null, 'create-todo-container')
+        
+        const title_fieldset = document.createElement('fieldset')
+        title_fieldset.classList.add('todo-title-field')
+        const title_legend = document.createElement('legend')
+        title_legend.textContent = 'Todo Title'
+        title_fieldset.appendChild(title_legend)
+        const title_input = document.createElement('input')
+        title_input.type = 'text'
+        title_input.maxLength = 16
+        title_fieldset.appendChild(title_input)
+        container.appendChild(title_fieldset)
+
+        const desc_fieldset = document.createElement('fieldset')
+        desc_fieldset.classList.add('todo-desc-field')
+        const desc_legend = document.createElement('legend')
+        desc_legend.textContent = 'Todo Description'
+        desc_fieldset.appendChild(desc_legend)
+        const desc_input = document.createElement('textarea')
+        desc_input.rows = '3'
+        desc_input.cols = '30'
+        
+        desc_input.maxLength = 50
+        desc_fieldset.appendChild(desc_input)
+        container.appendChild(desc_fieldset)
+
+        const date_fieldset = document.createElement('fieldset')
+        date_fieldset.classList.add('todo-date-field')
+        const date_legend = document.createElement('legend')
+        date_legend.textContent = 'Due Date'
+        date_fieldset.appendChild(date_legend)
+        const date_input = document.createElement('input')
+        date_input.type = 'date'
+        date_fieldset.appendChild(date_input)
+        container.appendChild(date_fieldset)
+
+        const priority_fieldset = document.createElement('fieldset')
+        priority_fieldset.classList.add('todo-priority-fieldset')
+        priority_fieldset.appendChild(helpers.createElement('legend','Priority', null))
+
+        const button1 = document.createElement('input')
+        button1.type = 'radio'
+        button1.value = '0';
+        button1.name = 'priority'
+        button1.id = 'low'
+
+        const label1 = document.createElement('label')
+        label1.classList.add('low')
+        label1.for = 'low'
+        label1.textContent = 'Low Priority'
+
+        const button2 = document.createElement('input')
+        button2.type = 'radio'
+        button2.value = '1';
+        button2.name = 'priority'
+        button2.id = 'med'
+
+        const label2 = document.createElement('label')
+        label2.for = 'med'
+        label2.classList.add('med')
+        label2.textContent = 'Medium Priority'
+
+        const button3 = document.createElement('input')
+        button3.type = 'radio'
+        button3.value = '2';
+        button3.name = 'priority'
+        button3.id = 'high'
+
+        const label3 = document.createElement('label')
+        label3.classList.add('high')
+        label3.for = 'high'
+        label3.textContent = 'High Priority'
+
+        priority_fieldset.appendChild(label1)
+        priority_fieldset.appendChild(button1)
+        
+        priority_fieldset.appendChild(label2)
+        priority_fieldset.appendChild(button2)
+        
+        priority_fieldset.appendChild(label3)
+        priority_fieldset.appendChild(button3)
+
+        container.appendChild(priority_fieldset)
+
+        const buttonContainer = helpers.createElement('div', null, 'create-project-button-container')
+        const cancelButton = document.createElement('button')
+        cancelButton.classList.add('cancel')
+        cancelButton.textContent = 'Cancel'
+        buttonContainer.appendChild(cancelButton)
+
+
+        cancelButton.addEventListener('click', () => {index.expandProject(proj)})
+        const submitButton = document.createElement('button')
+        submitButton.classList.add('submit')
+        submitButton.textContent = 'Create Todo'
+        buttonContainer.appendChild(submitButton)
+
+        container.appendChild(buttonContainer)
+
+        content.appendChild(container)
     }
 
 }

@@ -28,10 +28,14 @@ class expand {
             container.appendChild(helpers.createElement('p', 'This is where you will see your todo list. Create a todo to get started!', 'empty-list'))
         }
         for (todo of proj.list) {
-            console.log(todo)
+            container.appendChild(this.buildTodoCard(todo))
         }
 
         content.appendChild(container)
+    }
+
+    static buildTodoCard(todo) {
+        return null
     }
 }
 export {expand}
