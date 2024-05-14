@@ -145,12 +145,10 @@ class creationPage {
             let date = ''
             date = date.concat(unparsedDate.slice(5,7), '-', unparsedDate.slice(8,10), '-', unparsedDate.slice(0,4))
 
-            console.log(date)
             const title = title_input.value
             const desc = desc_input.value
             const priorityVal = document.querySelector('input[name="priority"]:checked').value
             let priority = null
-            console.log(priorityVal)
             switch (priorityVal) {
                 case '0':
                     priority = 'green'
@@ -162,7 +160,6 @@ class creationPage {
                     priority = 'red'
                     break
             }
-            console.log(priority)
             if (!title) {
                 title_input.style.borderColor = 'red'
             }

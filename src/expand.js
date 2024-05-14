@@ -39,7 +39,16 @@ class expand {
         container.style.boxShadow = `0px 0px 5px ${todo.priority} inset`
         const innerContainer = helpers.createElement('div', null, 'todo-card-inner-container')
 
-        innerContainer.appendChild(helpers.createElement('p', todo.title, 'todo-card-title'))
+        const title = document.createElement('p')
+        title.textContent = todo.title
+        title.classList.add('todo-card-title')
+        title.addEventListener('click', () => {
+            title.classList.toggle('line-strike')
+        })
+
+
+
+        innerContainer.appendChild(title)
         innerContainer.appendChild(helpers.createElement('p', todo.due, 'todo-card-date'))
         container.appendChild(innerContainer)
 

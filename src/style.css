@@ -436,11 +436,12 @@ body {
     font-size: 20px;
     font-weight: 700;
 
-    text-decoration: underline;
-
     transition: .4s;
 }
 .todo-card-title:hover {
     cursor: pointer;
+}
+.line-strike {
+    text-decoration: line-through;
 }
 
